@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skoutly AI - Autonomous Founder Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #00D4FF;
+            --secondary-blue: #0099CC;
+            --accent-green: #00FF88;
+            --neural-purple: #8B5CF6;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(0, 212, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --glow-color: rgba(0, 212, 255, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* AI-native animated background with neural network */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 15% 25%, rgba(0, 212, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(0, 255, 136, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 45% 60%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 25% 85%, rgba(139, 92, 246, 0.06) 0%, transparent 45%);
+            animation: backgroundPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+            25% {
+                opacity: 0.8;
+                transform: scale(1.05) rotate(0.5deg);
+                filter: blur(0.5px);
+            }
+            50% {
+                opacity: 1.2;
+                transform: scale(0.98) rotate(-0.3deg);
+                filter: blur(0px);
+            }
+            75% {
+                opacity: 0.9;
+                transform: scale(1.02) rotate(0.2deg);
+                filter: blur(0.3px);
+            }
+        }
+
+        /* Neural network lines */
+        .neural-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .neural-line {
+            position: absolute;
+            background: linear-gradient(45deg, var(--primary-blue), transparent, var(--accent-green));
+            animation: dataFlow 4s linear infinite;
+        }
+
+        .neural-line:nth-child(1) {
+            top: 20%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation-delay: 0s;
+        }
+
+        .neural-line:nth-child(2) {
+            top: 60%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            animation-delay: 1.5s;
+        }
+
+        .neural-line:nth-child(3) {
+            top: 0;
+            left: 30%;
+            width: 1px;
+            height: 100%;
+            animation-delay: 3s;
+        }
+
+        .neural-line:nth-child(4) {
+            top: 40%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            animation-delay: 2s;
+        }
+
+        .neural-line:nth-child(5) {
+            top: 0;
+            left: 70%;
+            width: 2px;
+            height: 100%;
+            animation-delay: 4s;
+        }
+
+        @keyframes dataFlow {
+            0% { opacity: 0; transform: translateX(-100%) scaleY(0.5); }
+            10% { opacity: 0.6; transform: translateX(-50%) scaleY(1); }
+            50% { opacity: 0.8; transform: translateX(0%) scaleY(1.2); }
+            90% { opacity: 0.4; transform: translateX(50%) scaleY(1); }
+            100% { opacity: 0; transform: translateX(100%) scaleY(0.5); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '█';
+            animation: blink 1.5s infinite;
+            color: var(--accent-green);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3) drop-shadow(0 0 20px var(--glow-color)); }
+        }
+
+        .hero .typing-effect {
+            display: inline-block;
+            border-right: 2px solid var(--accent-green);
+            animation: typewriter 4s steps(40) infinite;
+        }
+
+        @keyframes typewriter {
+            0%, 90% { border-color: var(--accent-green); }
+            95%, 100% { border-color: transparent; }
+        }
+
+        .hero p:first-of-type {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: lowercase;
+        }
+
+        .hero-subtext p {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+            text-transform: lowercase;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.3rem 3rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green), var(--neural-purple));
+            color: #000000;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--primary-blue);
+            font-family: 'Orbitron', monospace;
+            text-transform: lowercase;
+            letter-spacing: 1.2px;
+            box-shadow:
+                0 0 30px var(--glow-color),
+                0 8px 32px rgba(0, 255, 136, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button::after {
+            content: '⟩⟩';
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: rgba(0, 0, 0, 0.9);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px var(--accent-green);
+            filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.6));
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover::after {
+            right: 18px;
+            transform: translateY(-50%) scale(1.2);
+            color: #000000;
+            text-shadow: 0 0 15px var(--accent-green);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow:
+                0 0 40px var(--glow-color),
+                0 15px 40px rgba(0, 255, 136, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-blue), var(--neural-purple));
+            border-color: var(--accent-green);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            justify-items: center;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px var(--glow-color);
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--neural-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            position: relative;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.3;
+            flex-shrink: 0;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            flex-grow: 1;
+            display: flex;
+            align-items: flex-start;
+            text-align: center;
+            padding: 0 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-container {
+            width: 100%;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-green);
+            text-transform: lowercase;
+        }
+
+        .terminal {
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-right: 1rem;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control.close { background: #ff5f56; }
+        .control.minimize { background: #ffbd2e; }
+        .control.maximize { background: #27ca3f; }
+
+        .terminal-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .terminal-body {
+            padding: 2rem;
+            min-height: 500px;
+            position: relative;
+            background: #0d1117;
+        }
+
+        .terminal-session {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .terminal-line {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt-symbol {
+            color: var(--accent-green);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .command {
+            color: var(--primary-blue);
+        }
+
+        .terminal-output {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote-text {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .client-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .client-name {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .client-title {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .status-text {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .terminal-cursor {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            color: var(--accent-green);
+            animation: blink 1s infinite;
+            font-size: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 2rem;
+            background: rgba(0, 212, 255, 0.02);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+           
+            .hero h1 {
+                font-size: 3rem;
+            }
+           
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-card {
+                min-height: 280px;
+                padding: 1.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+           
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .features {
+                padding: 6rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.2rem;
+                min-height: 260px;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .feature-card p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+
+            .feature-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* AI-native floating particles */
+        .data-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            animation: dataFloat 8s ease-in-out infinite;
+            box-shadow: 0 0 8px var(--primary-blue);
+        }
+
+        .data-particle:nth-child(1) { top: 25%; left: 15%; animation-delay: 0s; }
+        .data-particle:nth-child(2) { top: 65%; left: 85%; animation-delay: 2s; background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+        .data-particle:nth-child(3) { top: 85%; left: 10%; animation-delay: 4s; background: var(--neural-purple); box-shadow: 0 0 8px var(--neural-purple); }
+        .data-particle:nth-child(4) { top: 35%; left: 75%; animation-delay: 1s; }
+        .data-particle:nth-child(5) { top: 75%; left: 25%; animation-delay: 3s; background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+        .data-particle:nth-child(6) { top: 15%; left: 60%; animation-delay: 5s; background: var(--neural-purple); box-shadow: 0 0 8px var(--neural-purple); }
+        .data-particle:nth-child(7) { top: 55%; left: 5%; animation-delay: 6s; }
+        .data-particle:nth-child(8) { top: 90%; left: 80%; animation-delay: 7s; background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); }
+
+        @keyframes dataFloat {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-20px) scale(1.5);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-35px) scale(0.8);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-15px) scale(1.2);
+                opacity: 0.9;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+   
+    <!-- Neural network lines -->
+    <div class="neural-lines">
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+    </div>
+   
+    <!-- AI-native floating particles -->
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+    <div class="data-particle"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Skoutly_AI</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Manual Sourcing is Dead. Tell Your Partner!</h1>
+            <div class="hero-subtext">
+                <p>We know who's building the next $10B company. Do you?</p>
+            </div>
+            <a href="#features" class="cta-button">Activate Intelligence</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Elite Intelligence Capabilities</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h3>Global_Talent_Exodus</h3>
+                <p>We track the great resignation before it happens. Silicon Valley to Singapore, London to Lagos - our neural networks detect founder movements across 50+ innovation hubs in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <h3>Big_Tech_Defection_Alerts</h3>
+                <p>Meta VP deletes LinkedIn. Google Principal Engineer goes dark. OpenAI researcher updates bio. We catch the talent exodus from AI powerhouses before the announcement drops.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01 1.01l-2.54 7.63H14v6h6z"/>
+                    </svg>
+                </div>
+                <h3>Executive_Evolution_Engine</h3>
+                <p>From employee to entrepreneur in 90 days. Our AI predicts C-suite executives making the founder leap based on behavioral patterns invisible to human scouts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                    </svg>
+                </div>
+                <h3>Elite_Pedigree_Intelligence</h3>
+                <p>Stanford mafia. MIT deep learning labs. Y Combinator networks. We map the academic and accelerator DNA that produces billion-dollar founders.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9.5 15.5L4.5 12L9.5 8.5V11H14.5V8.5L19.5 12L14.5 15.5V13H9.5V15.5ZM12 2A10 10 0 0 1 22 12A10 10 0 0 1 12 22A10 10 0 0 1 2 12A10 10 0 0 1 12 2Z"/>
+                    </svg>
+                </div>
+                <h3>Stealth_Signal_Processing</h3>
+                <p>Domain registrations. Team departures. Funding whispers. We decode stealth mode signals that reveal tomorrow's unicorns while competitors are still reading TechCrunch.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                </div>
+                <h3>Network_Constellation_Mapping</h3>
+                <p>Who's rebuilding their dream team? We analyze hiring patterns and co-founder chemistry to predict which founding teams will dominate their vertical.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2>// Intelligence_Validated</h2>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control close"></span>
+                        <span class="control minimize"></span>
+                        <span class="control maximize"></span>
+                    </div>
+                    <div class="terminal-title">skoutly_feedback.log</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-session">
+                        <div class="terminal-line">
+                            <span class="prompt-symbol">$</span>
+                            <span class="command">query_client_feedback --source="tier1_fund_█████"</span>
+                        </div>
+                        <div class="terminal-output">
+                            <div class="quote-text">"Skoutly gets us to founders before they even register their LLCs. Our LPs think we're psychic."</div>
+                            <div class="client-info">
+                                <span class="client-name">→ S█████ C███</span>
+                            </div>
+                        </div>
+                       
+                        <div class="terminal-line">
+                            <span class="prompt-symbol">$</span>
+                            <span class="command">query_client_feedback --source="emerging_gp_████"</span>
+                        </div>
+                        <div class="terminal-output">
+                            <div class="quote-text">"As a solo GP, I was getting crushed by the big funds. Skoutly leveled the playing field. Now I'm first to every deal that matters."</div>
+                            <div class="client-info">
+                                <span class="client-name">→ Emerging Manager</span>
+                            </div>
+                        </div>
+                       
+                        <div class="terminal-line">
+                            <span class="prompt-symbol">$</span>
+                            <span class="command">query_client_feedback --source="series_a_lead_███"</span>
+                        </div>
+                        <div class="terminal-output">
+                            <div class="quote-text">"Three months with Skoutly. Four term sheets signed and many more to come. This is what deal flow was supposed to feel like."</div>
+                            <div class="client-info">
+                                <span class="client-name">→ E███ T███████</span>
+                            </div>
+                        </div>
+                       
+                        <div class="terminal-line">
+                            <span class="prompt-symbol">$</span>
+                            <span class="command">export STATUS="intelligence_validated"</span>
+                        </div>
+                        <div class="terminal-output">
+                            <div class="status-text">✓ CLIENT_SATISFACTION_RATE: 100%</div>
+                            <div class="status-text">✓ COMPETITIVE_ADVANTAGE: MAXIMUM</div>
+                        </div>
+                    </div>
+                    <div class="terminal-cursor">█</div>
+                </div>
+                <div class="terminal-cursor">█</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>10K+</h3>
+                <p>Founders Tracked</p>
+            </div>
+            <div class="stat-item">
+                <h3>95%</h3>
+                <p>Signal Accuracy</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Autonomous Monitoring</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>Global Markets</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Ready to Transform Your Deal Flow?</h3>
+            <p style="font-family: 'Orbitron', monospace; font-size: 1.4rem; color: #ffffff; line-height: 1.6; letter-spacing: 0.3px; text-transform: lowercase;">we source at godspeed. you close like titans.</p>
+            <a href="mailto:deals@skoutly.com" class="cta-button">Activate Intelligence</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.borderBottom = '1px solid rgba(0, 212, 255, 0.3)';
+            } else {
+                nav.style.background = 'transparent';
+                nav.style.borderBottom = '1px solid rgba(0, 212, 255, 0.2)';
+            }
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItems = entry.target.querySelectorAll('.stat-item h3');
+                    statItems.forEach((stat, index) => {
+                        const finalValue = stat.textContent;
+                       
+                        // Handle 24/7 specially
+                        if (finalValue === '24/7') {
+                            stat.textContent = '0/0';
+                            setTimeout(() => {
+                                animate247(stat, 2000);
+                            }, index * 200);
+                        } else {
+                            // Handle other stats normally
+                            stat.textContent = '0';
+                            setTimeout(() => {
+                                const numericValue = parseInt(finalValue.replace(/\D/g, ''));
+                                let suffix = '';
+                                if (finalValue.includes('%')) suffix = '%';
+                                else if (finalValue.includes('K')) suffix = 'K+';
+                                else if (finalValue.includes('+')) suffix = '+';
+                               
+                                animateValue(stat, 0, numericValue, 2000, suffix);
+                            }, index * 200);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        function animate247(element, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+               
+                // Animate 24 and 7 separately
+                const currentHours = Math.floor(progress * 24);
+                const currentDays = Math.floor(progress * 7);
+                element.textContent = currentHours + '/' + currentDays;
+               
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = '24/7'; // Ensure final value is correct
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        function animateValue(element, start, end, duration, suffix) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
